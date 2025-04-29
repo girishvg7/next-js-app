@@ -1,4 +1,4 @@
-name: Maven CI - Test Branch
+name: Node.js CI - Test Branch
 
 on:
   push:
@@ -16,22 +16,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          distribution: 'temurin' # or 'zulu', 'adopt'
-          java-version: '17'
+          node-version: '16'  # Use any Node.js version
 
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven
-
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Install dependencies
+        run: npm install  # Or use 'yarn install' if using Yarn
 
       - name: Run tests
-        run: mvn test
+        run: npm test  # Or use 'yarn test' if using Yarn
