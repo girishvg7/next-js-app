@@ -1,0 +1,26 @@
+name: Production Branch Workflow
+
+on:
+  push:
+    branches:
+      - production   # Only runs on the 'production' branch
+  pull_request:
+    branches:
+      - production
+
+jobs:
+  run-on-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Say Hello
+        run: echo "🚀 Hello from the production branch workflow!"
+
+      - name: Simulate Production Deployment
+        run: |
+          echo "🔧 Building project for production..."
+          echo "📦 Packaging..."
+          echo "🚢 Deploying to production server..."
+          echo "✅ Deployment complete!"
