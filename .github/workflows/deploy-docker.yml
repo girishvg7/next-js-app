@@ -17,3 +17,4 @@ jobs:
       - uses: actions/checkout@v4
       - run: docker build . -t girishvg7/next-js-app:latest
       - run: docker push girishvg7/next-js-app:latest
+      
